@@ -42,6 +42,6 @@ public class RateLimitCacheImpl implements RateLimitCache {
             // it returns time in millis
             ttl = Math.abs(limitValueMapCache.remainTimeToLive(cacheKey))/1000;
         log.info("new TTL  {}  {}", ttl, cacheNameConfig.getTtlType().name());
-        limitValueMapCache.put(cacheKey, currCount.orElse(1) + Integer.valueOf(1), ttl, cacheNameConfig.getTtlType());
+        limitValueMapCache.put(cacheKey, currCount.orElse(0) + Integer.valueOf(1), ttl, cacheNameConfig.getTtlType());
     }
 }
